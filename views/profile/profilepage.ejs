@@ -1,0 +1,117 @@
+<% include ../partials/header %>
+
+<section class="bcgWhite">
+	<div class="row">
+		<div class="profcol6 col-md-6">
+			<h2 class="profileh4 text-center">User profile</h2>
+			<div class="row bgc">
+				<div class="Imagebox">
+					<img class="img-responsive thumbnail" width="260px" src="<%= currentUser.image %>">
+					<br />
+					<a href="/profile/<%= currentUser._id %>/upload" class="btn btn-large btn-success"><i class="fa fa-picture-o" aria-hidden="true"></i> Upload avatar</a>
+				</div>
+				<hr class="style-two" />
+				<div class="col-md-8 col-md-offset-2">
+					<h4 class="profileh4">User Info</h4>
+					<table class="table table-striped">
+						<tr>
+							<th>Fullname</th>
+							<td><%= currentUser.getFullName() %></td>
+						</tr>
+						<tr>
+							<th>Username</th>
+							<td><%= currentUser.username %></td>
+						</tr>
+						<tr>
+							<th>Email</th>
+							<td><%= currentUser.email %></td>
+						</tr>
+						<tr>
+							<th>Profile created</th>
+							<td><%= moment(currentUser.created).format("LLL") %></td>
+						</tr>
+					</table>
+				</div>
+				
+				<hr class="style-two" />
+				<h4 class="text-uppercase">Edit Profile</h4>
+					<a class="btn btn-large btn-warning" href="/profile/<%= currentUser._id %>/edit" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a>
+
+					
+
+					<form class="delete" action="/profile/<%= currentUser._id %>?_method=DELETE" method="POST">
+					<button class="btn btn-large btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete profile</button>
+				</form>
+				
+					
+			</div>
+		</div>
+		<div class="profcol6 col-md-6">
+			<h2 class="profileh4 text-center">My Campgrounds</h2>
+			<div class="row bgc">
+				<a class="btn btn-success btn-large" href="/campgrounds/new"><i class="fa fa-plus" aria-hidden="true"></i> Add new campground</a>
+				<hr class="style-two" />
+			<div class="row">
+			<% for(var i = 0; i < campgrounds.length; i++) { %>
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="text-center panel-title"><strong><%= campgrounds[i].name %></strong></h3>
+					</div>
+					<div class="panel-body">
+						<img class="img-responsive small" src="<%= campgrounds[i].image %>" />
+						<a class="btn-block btn btn-info btn-small" href="/campgrounds/<%= campgrounds[i]._id %>"><i class="fa fa-search-plus" aria-hidden="true"></i> View Campground</a>
+						<a class="btn btn-warning btn-small btn-block" href="/campgrounds/<%= campgrounds[i]._id %>/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+						<form action="/campgrounds/<%= campgrounds[i]._id %>?_method=DELETE" method="POST">
+							<button class="btn btn-danger btn-small btn-block"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<% } %>
+			</div>
+			<div class="row">
+			<div class="col-md-offset-1">
+				<ul class="pagination pagination-lg">
+					<% if(output.pages.current > 1 && output.pages.hasPrev === true) { %>
+					<li>
+      					<a href="/profile/page/<%= output.pages.prev %>" aria-label="Previous">
+        					<span aria-hidden="true">&laquo;</span>
+      					</a>
+    				</li>
+    				<% } else { %>
+    				<li>
+      					<a class="btn btn-xs disabled" href="#" aria-label="Previous">
+        					<span aria-hidden="true">&laquo;</span>
+      					</a>
+    				</li>
+    				<% } %>
+   					<li>
+    				<% for(var i = 1; i < output.pages.total +1; i++) { %> 
+    					<li>
+    						<a href="/profile/page/<%= i %>"><%= i %></a>
+    					</li>
+    				<% } %>
+    				</li>
+    				<% if(output.pages.current < output.pages.total && output.pages.hasNext === true) { %>
+    				<li>
+      					<a href="/profile/page/<%= output.pages.next %>" aria-label="Next">
+        					<span aria-hidden="true">&raquo;</span>
+      					</a>
+    				</li>
+    				<% } else { %>
+    				<li>
+      					<a class="btn btn-xs disabled" href="#" aria-label="Next">
+        					<span aria-hidden="true">&raquo;</span>
+      					</a>
+    				</li>
+    				<% } %>
+				</ul>
+			</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<% include ../partials/footer %>

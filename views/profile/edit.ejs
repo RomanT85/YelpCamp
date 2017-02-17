@@ -1,0 +1,46 @@
+<% include ../partials/header %>
+
+<section>
+	<div class="row bgcForm">
+		<div class="col-md-6">
+		<h1>Edit Profile info</h1>
+			<form action="/profile/<%= currentUser._id %>?_method=PUT" method="POST">
+			
+				<div class="form-group">
+					<input class="form-control" type="text" name="firstname" placeholder="Firstname" required />
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="lastname" placeholder="Lastname" required />
+				</div>
+		
+				<div class="form-group">
+					<button class="btn btn-info btn-block"><i class="fa fa-user-plus" aria-hidden="true"></i>Edit Profile info</button>
+				</div>
+
+
+			</form>
+		</div>
+		<div class="col-md-6">
+			<h1>Change Password</h1>
+			<form action="/profile/<%= currentUser._id %>/changepassword" method="POST">
+				<div class="form-group">
+					<label for="CurrentPassword">Current Password:</label>
+					<input class="form-control" id="CurrentPassword" type="password" name="cpassword">
+				</div>
+				<div class="form-group">
+					<label for="NewPassword">New Password:</label>
+					<input class="form-control" id="NewPassword" type="password" name="password">
+				</div>
+				<div class="form-group">
+					<label for="confNewPassword">Confirm New Password:</label>
+					<input class="form-control" id="confNewPassword" type="password" name="confpassword">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-success btn-block">Change Password</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+
+<% include ../partials/footer %>

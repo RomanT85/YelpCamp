@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+	<header>
+		<div class="jumbotron">
+			<img id="indexLogo" src="/images/logo2.png">
+			<h1 id="mainHeader">Campgrounds</h1>
+			<p>Create and view best campgrounds from all over the world</p>
+			<p>Start Today!</p>
+		</div>
+	</header>
+
+	<section class="bcgWhite">
+		<div class="row">
+			<% for(var i = 0; i < campgrounds.length; i++) { %>
+			<div class="col-md-3 col-sm-6">
+				<div id="campgroundsThumbnail" class="thumbnail">
+					<img class="indeximg img-responsive" src="/images/uploads/<%= campgrounds[i].image %>">
+					<div class="caption">
+						<h4><%= campgrounds[i].name %></h4>
+					</div>
+					<p>
+						<a href="/campgrounds/<%= campgrounds[i]._id %>" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i> More Info</a>
+					</p>
+				</div>
+			</div>
+			<% } %>
+		</div>
+		
+	</section>
+
+<% include ../partials/footer %>

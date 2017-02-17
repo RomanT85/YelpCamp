@@ -1,0 +1,180 @@
+body {
+   /* background: url(https://images.unsplash.com/photo-1414016642750-7fdd78dc33d9?dpr=2&fit=crop&fm=jpg&h=825&ixlib=rb-0.3.5&q=50&w=1450);
+    background: url(https://images.unsplash.com/photo-1444012236767-1b471c68781c?dpr=2&fit=crop&fm=jpg&h=825&ixlib=rb-0.3.5&q=50&w=1450);
+    background: url(https://images.unsplash.com/photo-1444012104069-996724bf4a0a?dpr=2&fit=crop&fm=jpg&h=825&ixlib=rb-0.3.5&q=50&w=1450);
+    background: url(https://images.unsplash.com/photo-1445308394109-4ec2920981b1?dpr=2&fit=crop&fm=jpg&h=825&ixlib=rb-0.3.5&q=50&w=1450);
+    background-size: cover; 
+    background-position: center  no-repeat;
+    transition: background 1.5s linear;
+    -webkit-backface-visibility: hidden;
+    webkit-transition: background-image 1.5s linear;
+    -webkit-transform:translate3d(0,0,0);*/
+    background-color: #000;
+    overflow-x: hidden;
+}
+
+hr {
+    width: 35%;
+    box-shadow: 1px 1px 1.5px #434343;
+}
+
+h1 {
+    font-size: 75px;
+    line-height: 75px;
+}
+
+#landing-header p {
+    font-size: 35px;
+    line-height: 35px;
+}
+
+#landing-header {
+    letter-spacing: 1.2px;
+    text-shadow: 1px 1px 1.5px #222222;
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    padding-top: 40vh;
+}
+
+#landing-header h1 {
+    font-family: Rye, sans-serif;
+}
+
+#landing-header h1, p {
+    color: #ffffff;
+}
+
+.btn-default {
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 1.2px;
+    width: 350px;
+    padding: 25px;
+    background-color: rgba(245, 245, 245,0.8);
+}
+
+.slideshow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.slideshow li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;
+    animation: imageAnimation 50s linear infinite;
+}
+
+.slideshow li:nth-child(1) {
+    background-image: url(http://i.imgur.com/K3mPv14.jpg);
+}
+.slideshow li:nth-child(2) {
+    background-image: url((http://i.imgur.com/SBEmFpv.jpg);
+    animation-delay: 10s;
+}
+.slideshow li:nth-child(3) {
+    background-image: url(http://i.imgur.com/emvhOnb.jpg);
+    animation-delay: 20s;
+}
+.slideshow li:nth-child(4) {
+    background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+    animation-delay: 30s;
+}
+.slideshow li:nth-child(5) {
+    background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+    animation-delay: 40s;
+}
+
+@keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        animation-timing-function: ease-in;
+    }
+    10% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+    20% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+    }
+}
+
+/* Older browser support - class added by modernizr */
+.no-cssanimations .slideshow li {
+    opacity: 1;
+}
+
+svg {
+height: 100%;
+width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+svg .st0 {
+  fill: none;
+  stroke-width: 2.7px;
+  stroke: #fafafa;
+  opacity: 1;
+  stroke-dasharray: 940;
+  stroke-dashoffset: 940;
+  animation: 3.5s ellipse-outline forwards;
+}
+
+svg path {
+  fill: rgb(208,178,108);
+  stroke: #fafafa;
+  stroke-width: 1.5px;
+  stroke-dasharray: 385;
+  stroke-dashoffset: 385;
+  opacity: 0;
+  animation: 3s ease-in 0.3s path-outline forwards;
+}
+
+@keyframes ellipse-outline {
+  from {
+    stroke-dashoffset: 940;
+    opacity: 1;
+  }
+  to {
+    stroke-dashoffset: 0; 
+    opacity: 0;
+    transition: 5s;
+  }
+}
+
+@keyframes path-outline {
+  from {
+    stroke-dashoffset: 385;
+    fill: none;
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    fill: rgb(208,178,108);
+    opacity: 1;
+  }
+}

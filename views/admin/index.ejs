@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+<section class="bcgWhite">
+	<div class="row">
+		<h2 class="section-header text-center">Admin page</h2>
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">Users<span id="adminInfoSpan"></span><span class="badge pull-right">Users total: <%= users.length %></span></div>
+					<table class="table">
+						<tr>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Created</th>
+							<th>Roles</th>
+							<th>View</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+						<% for(var i = 0; i < users.length; i++) { %>
+						<tr>
+							<td><%= users[i].username %></td>
+							<td><%= users[i].email %></td>
+							<td>
+							<%=moment(users[i].created).format('LL')%></td>
+							<td><a class="btn btn-default" href="">Make admin</a></td>
+							<td><a class="btn btn-primary" href="/user/<%= users[i]._id %>/view">More info</a></td>
+							<td><a class="btn btn-warning" href="<%= users[i]._id %>/edit">Edit</a></td>
+							<td><form id="remUser">
+									<input type="hidden" name="_id" value="<%= users[i]._id%>">
+									<button type="submit" id="userDeleteBtn" class="btn btn-danger">Delete</button>
+								</form>
+							</td>
+						</tr>
+						<% } %>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<% include ../partials/footer %>

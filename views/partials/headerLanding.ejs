@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>YelpCamp Project</title>
+		<script type="text/javascript" src="../scripts/jquery-1.12.1.js"></script>
+		
+		<link rel="stylesheet" href="/font-awesome-4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/landing.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+	</head>
+	
+	<body>
+
+	    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
