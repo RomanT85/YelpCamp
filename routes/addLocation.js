@@ -11,7 +11,7 @@ var Campground      = require("../models/campground.js"),
 var options = {
         provider: 'google',
         httpAdapter: 'https',
-        apiKey: 'AIzaSyAA6LW0mzh76F2Pg1oR91hXioEWeSO0SiU',
+        apiKey: 'your api key goes here',
         formatter: null
     };
 
