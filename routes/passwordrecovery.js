@@ -32,13 +32,13 @@ async.waterfall([
       var smtpTransport = nodemailer.createTransport('SMTP', {
        service: 'Gmail',
 		auth: {
-			user: 'yelpcampapp@gmail.com',
-			pass: 'yelpcamp123'
+			user: 'youremail@gmail.com',
+			pass: 'your password'
 		}
       });
       var mailOptions = {
         to: user.email,
-        from: 'Yelp Camp <yelpcampapp@gmail.com>',
+        from: 'Yelp Camp <youremail@gmail.com>',
         subject: 'YelpCamp Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -92,13 +92,13 @@ router.post('/reset/:token', function(req, res) {
       var smtpTransport = nodemailer.createTransport('SMTP', {
          service: 'Gmail',
 		auth: {
-			user: 'yelpcampapp@gmail.com',
-      pass: 'yelpcamp123'
+			user: 'youremail@gmail.com',
+      pass: 'your password'
 		}
       });
       var mailOptions = {
         to: user.email,
-        from: 'yelpcampapp@gmail.com',
+        from: 'youremail@gmail.com',
         subject: 'Your password has been changed',
         text: 'Hello,\n\n' +
           'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
