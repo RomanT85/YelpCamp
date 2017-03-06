@@ -55,6 +55,7 @@ function paginate(req, res, next) {
 	};
 	Campground
 	.find()
+	.sort({"name": 1})
 	.skip((page - 1) * perPage)
     .limit(perPage)	
     .exec(function(err, allCampgrounds) {
