@@ -19,14 +19,29 @@ var express 			= require("express"),
 
 var app 				= express();
 
-// mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect(secret.database, function(req ,err) {
-    if (err) {
-    	req.flash('error', 'Could not establish connection to the database.');
-      console.log(err.message);
-    } else {
-      console.log("Successfully connected to the database!");
-    }
+// CONNECTION EVENTS
+mongoose.connect(secret.database);
+// When successfully connected
+mongoose.connection.on('connected', function () {  
+  console.log('Mongoose default connection open');
+}); 
+
+// If the connection throws an error
+mongoose.connection.on('error',function (err) {  
+  console.log('Mongoose default connection error: ' + err);
+}); 
+
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function () {  
+  console.log('Mongoose default connection disconnected'); 
+});
+
+// If the Node process ends, close the Mongoose connection 
+process.on('SIGINT', function() {  
+  mongoose.connection.close(function () { 
+    console.log('Mongoose default connection disconnected through app termination'); 
+    process.exit(0); 
+  }); 
 });
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan('dev'));
